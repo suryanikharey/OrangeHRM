@@ -1,8 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Test Execution Demo Suite">
-    <test name="Book Hotel">
+<suite name="Orange HRM Automation Suite" >
+    <test name="Employee Details">
         <classes>
-            <class name="org.example.BookHotelFire"></class>
+            <class name="FinalAssignment.OrangeHrmTest"></class>
+            <class name="FinalAssignment.AdminPage"></class>
+            <class name="FinalAssignment.PimPage"></class>
+            <class name="FinalAssignment.LoginPage"></class>
         </classes>
     </test>
-</suite>
+    </suite>
