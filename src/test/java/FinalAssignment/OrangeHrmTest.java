@@ -125,7 +125,7 @@ public class OrangeHrmTest {
 
         pimPage.pimTabClick();
         pimPage.addEmpMethod();
-        pimPage.enterFName("Peppa");
+        pimPage.enterFName("Minnie");
         pimPage.enterLName("Pig");
         pimPage.saveEmp();
         Thread.sleep(1000);
