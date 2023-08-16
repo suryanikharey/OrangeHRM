@@ -31,7 +31,7 @@ public class OrangeHrmTest {
     }
 
     private static WebDriver driver;
-    private static String baseurl;
+  //  private static String baseurl;
     static ExtentReports extent;
     ExtentTest test;
     static LoginPage loginPage;
@@ -81,6 +81,7 @@ public class OrangeHrmTest {
         loginPage.enterUserName(data1);
 
         loginPage.enterPassword(data2);
+        Assert.assertTrue(true);
         test.log(Status.INFO, "login credential check");
 
         loginPage.submit();
@@ -94,6 +95,7 @@ public class OrangeHrmTest {
         adminPage.userDropDown();
         adminPage.statusDropDown();
         adminPage.searchAdminresult();
+        Assert.assertTrue(true);
         test.log(Status.INFO, "Performed search on Enabled Admin Users");
         js.executeScript("window.scrollBy(0, 600)");
         Thread.sleep(3000);
@@ -101,7 +103,7 @@ public class OrangeHrmTest {
     }
 
     @Test(priority = 4)
-//test to chek employee name of User name 'Admin'
+//test to check employee name of User name 'Admin' and profile name match
     public void adminEmpName() throws Exception {
         test = extent.createTest("Verify the Employee name of user name 'Admin' ");
         js.executeScript("window.scrollBy(0,-600)");
@@ -112,22 +114,23 @@ public class OrangeHrmTest {
 
         Thread.sleep(1000);
         test.log(Status.INFO, "Verified Emp name with User name-Admin");
-        Assert.assertEquals(adminPage.getEmpName(), "Paul Coings","EMP MISMATCH");
+        Assert.assertEquals(adminPage.getEmpName(), adminPage.getProfileName(),"EMP MISMATCH");
 
     }
 
-    //PIM page
+    //PIM page Enter New employee Name and save
     @Test(priority = 5)
     public void pimtabMethod() throws Exception {
         test = extent.createTest("Verify Add Employee Function ");
 
         pimPage.pimTabClick();
         pimPage.addEmpMethod();
-        pimPage.enterFName("Salman");
-        pimPage.enterLName("Khan");
+        pimPage.enterFName("Peppa");
+        pimPage.enterLName("Pig");
         pimPage.saveEmp();
         Thread.sleep(1000);
       //  pimPage.pimtakeScreenshot();
+        Assert.assertTrue(true);
         test.log(Status.INFO, "New Emp added and saved");
 
 

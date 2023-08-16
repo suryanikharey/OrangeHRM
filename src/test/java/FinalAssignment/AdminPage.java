@@ -37,8 +37,8 @@ WebElement resetButton;
 WebElement searchAdmin;
 @FindBy(xpath = "//div[@class='oxd-table-card']//div[4]")
 WebElement empName;
-
-
+@FindBy(xpath = "//p[@class='oxd-userdropdown-name']")
+WebElement profileName;
 public AdminPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -54,6 +54,10 @@ public void checkUserName(String enterUserId){
 
 public String getEmpName(){
    return empName.getText();
+}
+
+public String getProfileName() {
+    return profileName.getText();
 }
 
     public void adminClick() {
