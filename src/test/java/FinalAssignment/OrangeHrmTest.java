@@ -79,12 +79,11 @@ public class OrangeHrmTest {
         test = extent.createTest("Verify the Login function");
 
         loginPage.enterUserName(data1);
-
         loginPage.enterPassword(data2);
-        Assert.assertTrue(true);
+        loginPage.submit();
+        Assert.assertTrue(loginPage.isProfilePicPresent(),"login fail");
         test.log(Status.INFO, "login credential check");
 
-        loginPage.submit();
     }
 
     @Test(priority = 3)
@@ -129,8 +128,7 @@ public class OrangeHrmTest {
         pimPage.enterLName("Pig");
         pimPage.saveEmp();
         Thread.sleep(1000);
-      //  pimPage.pimtakeScreenshot();
-        Assert.assertTrue(true);
+        Assert.assertTrue(pimPage.saveSuccessDisplay(),"Not Saved");
         test.log(Status.INFO, "New Emp added and saved");
 
 

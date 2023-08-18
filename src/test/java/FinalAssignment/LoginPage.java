@@ -18,6 +18,9 @@ public class LoginPage {
     @FindBy (xpath = "//button[@type='submit']")
     WebElement submit;
 
+    @FindBy (xpath = "//img[@alt='profile picture']")
+WebElement profilePic;
+
         //initialize class and driver
 
     public LoginPage(WebDriver driver){
@@ -37,6 +40,10 @@ public class LoginPage {
 public boolean isUserNamePresent(){
         return userName.isDisplayed();
 
+}
+
+public boolean isProfilePicPresent(){
+        return profilePic.isDisplayed();
 }
 
 }

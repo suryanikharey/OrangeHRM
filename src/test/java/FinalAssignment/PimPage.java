@@ -28,6 +28,9 @@ WebElement enterLastName;
 @FindBy(xpath = "//button[text()=' Save ']")
 WebElement saveNewEmp;
 
+@FindBy(xpath = "//div[@class='oxd-toast-content oxd-toast-content--success']/p[text()='Success']")
+WebElement saveSuccess;
+
     public PimPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -50,6 +53,10 @@ public void enterLName(String lName){
 
 public void saveEmp(){
   saveNewEmp.click();
+}
+
+public boolean saveSuccessDisplay() {
+    return saveSuccess.isDisplayed();
 }
 
  public void pimtakeScreenshot() throws Exception {
