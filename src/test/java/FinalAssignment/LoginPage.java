@@ -21,6 +21,9 @@ public class LoginPage {
     @FindBy (xpath = "//img[@alt='profile picture']")
 WebElement profilePic;
 
+    @FindBy (xpath = "//p[text()='Invalid credentials']")
+    WebElement invalidCred;
+
         //initialize class and driver
 
     public LoginPage(WebDriver driver){
@@ -45,5 +48,7 @@ public boolean isUserNamePresent(){
 public boolean isProfilePicPresent(){
         return profilePic.isDisplayed();
 }
-
+    public boolean invalidLogin(){
+        return invalidCred.isDisplayed();
+    }
 }

@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
+import static java.util.function.Predicate.not;
+
 
 public class OrangeHrmTest {
 
@@ -25,7 +27,7 @@ public class OrangeHrmTest {
     public Object[][] getDate() {
         return new Object[][]{
                 {"Admin", "admin345"},
-                {"Admin", "admin123"},
+                {"Admin123", "admin123"},
 
         };
     }
@@ -70,23 +72,33 @@ public class OrangeHrmTest {
 
     }
 
-    //input data
+    //input data check for incorrect login credentials
     @Test(dataProvider = "inputData", dependsOnMethods = "webPageLoaderTest", priority = 2)
 
-    public void loginTest(String data1, String data2) {
+    public void invalidLoginTest(String data1, String data2) {
 
         // Create a new Test section inside the Extent Report
-        test = extent.createTest("Verify the Login function");
+        test = extent.createTest("Verify the incorrect Login function");
 
         loginPage.enterUserName(data1);
         loginPage.enterPassword(data2);
         loginPage.submit();
-        Assert.assertTrue(loginPage.isProfilePicPresent(),"login fail");
-        test.log(Status.INFO, "login credential check");
-
+        Assert.assertTrue(loginPage.invalidLogin(),"test case failed");
+        test.log(Status.INFO, "invalid login credential check pass");
     }
 
     @Test(priority = 3)
+    //test case to validate correct login credentials
+public void validLoginTest(){
+        // Create a new Test section inside the Extent Report
+        test = extent.createTest("Verify the correct credential Login function");
+        loginPage.enterUserName("Admin");
+        loginPage.enterPassword("admin123");
+        loginPage.submit();
+        Assert.assertTrue(loginPage.isProfilePicPresent(),"test case failed");
+        test.log(Status.INFO, "valid login credential check pass");
+    }
+    @Test(priority = 4)
     //test case to see list of enabled employee with User Role Admin
     public void adminMethodTest() throws Exception {
         test = extent.createTest("Verify the list of Enabled admin Users ");
@@ -101,7 +113,7 @@ public class OrangeHrmTest {
      //   adminPage.takeScreenshot();
     }
 
-    @Test(priority = 4)
+    @Test(priority = 5)
 //test to check employee name of User name 'Admin' and profile name match
     public void adminEmpName() throws Exception {
         test = extent.createTest("Verify the Employee name of user name 'Admin' ");
@@ -118,13 +130,13 @@ public class OrangeHrmTest {
     }
 
     //PIM page Enter New employee Name and save
-    @Test(priority = 5)
+    @Test(priority = 6)
     public void pimtabMethod() throws Exception {
         test = extent.createTest("Verify Add Employee Function ");
 
         pimPage.pimTabClick();
         pimPage.addEmpMethod();
-        pimPage.enterFName("Minnie");
+        pimPage.enterFName("peppa");
         pimPage.enterLName("Pig");
         pimPage.saveEmp();
         Thread.sleep(1000);
