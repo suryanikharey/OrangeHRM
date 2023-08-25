@@ -136,7 +136,7 @@ public void validLoginTest(){
 
         pimPage.pimTabClick();
         pimPage.addEmpMethod();
-        pimPage.enterFName("peppa");
+        pimPage.enterFName("macaroni");
         pimPage.enterLName("Pig");
         pimPage.saveEmp();
         Thread.sleep(1000);
